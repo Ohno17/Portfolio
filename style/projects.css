@@ -1,0 +1,188 @@
+
+#projects {
+
+	display: flex;
+	
+}
+
+#honeycomb {
+	
+  font-size: 0;
+
+	--s: 150px;
+  --m: 4px;
+  --f: calc(1.732 * var(--s) + 4 * var(--m)  - 1px);
+	
+}
+
+#honeycomb .hexagon {
+
+	visibility: visible;
+
+	position: relative;
+	
+  width: var(--s);
+  margin: var(--m);
+  height: calc(var(--s)*1.1547);
+	
+  display: inline-block;
+	
+  font-size:initial;
+  clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+	
+  margin-bottom: calc(var(--m) - var(--s)*0.2885); 
+
+	background: var(--accent-color-one);
+	transition: background 500ms, transform 1s;
+	
+}
+
+#honeycomb .hexagon::after {
+
+	content: attr(title);
+
+	position: absolute;
+
+	top: 50%;
+	left: calc((30% / 2) - 5px);
+	
+  transform: translateY(-50%);
+	
+  width: 70%;
+
+	padding: 5px;
+
+	text-align: center;
+
+	border-radius: 10px;
+
+	background: rgba(0, 0, 0, 0.8);
+
+	opacity: 0;
+	transition: opacity 200ms;
+	
+}
+
+#honeycomb .hexagon::before {
+
+	content: "";
+
+	position: absolute;
+
+	top: 0px;
+	left: 0px;
+	
+  width: 100%;
+  height: 100%;
+
+	background-size: cover;
+	background-position: 50% 50%;
+	transition: filter 500ms, transform 1s;
+	
+}
+
+#honeycomb .hexagon:hover, #honeycomb .hexagon:focus {
+
+	transform: scale(1.1);
+	background: var(--accent-color-two);
+	
+}
+
+#honeycomb .hexagon:hover::after, #honeycomb .hexagon:focus::after {
+
+	opacity: 1;
+	
+}
+
+#honeycomb .hexagon:hover::before, #honeycomb .hexagon:focus::before {
+
+	transform: scale(1.1);
+	filter: brightness(1.5);
+	
+}
+
+#honeycomb .hexagon:active::before {
+	filter: brightness(2);
+}
+
+#honeycomb .hexagon:active {
+	transition: transform 100ms;
+	transform: scale(0.8);
+}
+
+#honeycomb::before {
+	
+  content: "";
+  width: calc(var(--s)/2 + var(--m));
+  float: left;
+  height: 120%;
+  shape-outside: repeating-linear-gradient(     
+                   #0000 0 calc(var(--f) - 3px),      
+                   #000  0 var(--f)
+	);
+	
+}
+
+dialog {
+	max-width: 70vw;
+	min-width: 40vw;
+
+	max-height: 90vh;
+	min-height: 30vh;
+
+	font-size: 1.1em;
+
+	color: var(--main-color);
+	background: var(--background-color);
+	
+	border: 10px solid black;
+	box-shadow: 10px 10px 2px black;
+	outline-width: 3px;
+}
+
+dialog #dialogbody {
+	padding: 10px;
+	margin-bottom: calc(5em + 10px);
+}
+
+dialog h3 a::after {
+	content: url("/asset/newtab.svg");
+	margin: 2px;
+}
+
+dialog form {
+	position: absolute;
+
+	bottom: 0px;
+	left: 0px;
+	width: calc(100% - 20px);
+	height: 5em;
+
+	padding: 10px;
+
+	background: var(--accent-color-one);
+}
+
+dialog form button {
+	width: min(350px, 100%);
+	height: 100%;
+
+	color: var(--main-color);
+	background: var(--background-color);
+
+	border: 3px solid black;
+	outline-width: 3px;
+
+	transition: background 300ms, color 300ms;
+}
+
+dialog form button:hover {
+	color: var(--accent-color-one);
+	background: var(--main-color);
+}
+
+dialog::backdrop {
+	
+  background: rgba(0, 0, 0, 0.25);
+	
+}

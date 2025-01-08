@@ -1,0 +1,82 @@
+
+header {
+
+	background-color: var(--accent-color-one);
+	color: var(--main-color);
+	
+	position: fixed;
+	padding: 20px;
+	width: calc(100vw - 40px);
+	height: 50px;
+
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+
+	z-index: 100;
+
+	transition: transform 1s;
+	
+}
+
+header[data-active="true"] {
+
+	transform: translateY(0px);
+	
+}
+
+header[data-active="false"] {
+
+	transform: translateY(-100px);
+	
+}
+
+header h1 {
+
+	all: unset;
+	
+}
+
+header a {
+
+	color: var(--main-color);
+	text-decoration: none;
+
+	margin: auto;
+	margin-left: 0px;
+
+	cursor: pointer;
+	
+}
+
+header a:hover {
+	color: var(--accent-color-two);
+}
+
+nav {
+
+	margin: auto;
+	margin-right: 0px;
+	
+}
+
+nav button {
+
+	color: var(--background-color);
+	background-color: var(--accent-color-two);
+	border: none;
+
+	font-size: 1.1em;
+	text-decoration: none;
+
+	padding: 5px;
+
+	cursor: pointer;
+	
+}
+
+nav button.active {
+
+	background-color: var(--main-color);
+	
+}

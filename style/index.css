@@ -1,0 +1,23 @@
+
+#name {
+
+	text-shadow: 0px 0px 5px currentColor;
+	
+}
+
+#intro {
+
+	font-size: 1.8em;
+	
+}
+
+#tcanvas {
+
+	position: absolute;
+
+	left: 0px;
+	top: -100px;
+
+	z-index: -10;
+	
+}

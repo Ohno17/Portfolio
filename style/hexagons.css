@@ -1,0 +1,28 @@
+
+#hex0::before {
+	background-image: url("../asset/shapeshoot.png");
+}
+
+#hex1::before {
+	background-image: url("../asset/flappysquare.png");
+}
+
+#hex2::before {
+	background-image: url("../asset/greenism.png");
+}
+
+#hex3::before {
+	background-image: url("../asset/bobux.png");
+}
+
+#hex4::before {
+	background-image: url("../asset/vex.png");
+}
+
+#hex5::before {
+	background-image: url("../asset/test.png");
+}
+
+#hex6::before {
+	background-image: url("../asset/test.png");
+}

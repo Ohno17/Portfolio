@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+			
+		<title>CS Portfolio - Home</title>
+			
+		<link href="style/main/style.css" rel="stylesheet" type="text/css"/>
+		<link href="style/main/nav.css" rel="stylesheet" type="text/css"/>
+		<link href="style/index.css" rel="stylesheet" type="text/css"/>
+		<link href="style/projects.css" rel="stylesheet" type="text/css"/>
+		<link href="style/hexagons.css" rel="stylesheet" type="text/css"/>
+		
+	</head>
+	
+	<body>
+
+		<dialog id="projectdialog">
+
+			<div>
+				<h3 id="dialogtitle"></h3>
+			  <div id="dialogbody"></div>
+			</div>
+
+			<form method="dialog">
+			  <button type="submit">Close</button>
+	  	</form>
+			
+		</dialog>
+	
+		<header data-active="true">
+			
+			
+			<a href="#/home"><h1>Computer Science Portfolio</h1></a>
+
+			<nav>
+				<button onclick="switchToIndex()" id="indexbutton" class="active">Home</button>
+				<button onclick="switchToProject()" id="projectbutton" class="">Projects</button>
+			</nav>
+			
+		</header>
+
+		<div id="spacer" aria-hidden="true"></div>
+
+		<div id="content" data-active="index">
+
+			<!-- Index page -->
+
+			<div id="index" aria-hidden="false" tabindex="0">
+
+				<main role="main">
+		
+					<section id="firstintro">
+						
+						<h2 id="intro">Hello, my name is <span id="name">Ajay</span>.</h2>
+
+						<p>
+							I first started to code when I was 9 years old because I wanted to make games for my friends to play. I started on Scratch, learning the basics of programming. After making a couple games with Scratch, I realized that I wanted to be a programmer. When I had grown tired of Scratch’s limitations, I started making games on Roblox, where I utilized a programming language named Lua. Now that I had learned Lua, a text-based language, I started to branch out into other languages like Python, Java, C, and HTML/CSS. I took classes at Code Ninja for a year and learned Javascript. From there I continued to code and make new projects in different programming languages. With my skills in programming, I taught the people around me how to code.<br><br>
+
+							In our middle school’s VEX Robotics club, I was the lead programmer in our team, who had gotten 4th place. I had learned to take into account the design of the robot as well as the driver’s feedback in order to create an effective program.<br><br>
+							
+							When I was participating in a First Robotics team, teamwork was an important part of building our robot. We worked together, and discussed solutions, developing important engineering skills in the process. I had learned how to gather and evaluate information to make decisions, and because of that, I felt that my experience on the team was very rewarding and educational.
+
+						</p>
+						
+					</section>
+
+					<section>
+		
+						<h2>Skills</h2>
+
+						<p>HTML, CSS, Javascript, ReactJS, Python, C, Java, Flask</p>
+						
+					</section>
+
+					<section>
+		
+						<h2 style="display: inline-block; margin-right: 10px;">Links</h2>
+
+						<a href="https://github.com/Ohno17" target="_blank" rel="noopener noreferrer">Github</a>
+						<a href="https://replit.com/@Ohno17" target="_blank" rel="noopener noreferrer">Replit</a>
+						
+					</section>
+					
+				</main>
+
+			</div>
+
+			<!-- Projects page -->
+	
+			<div id="project" aria-hidden="true" tabindex="-1">
+			
+				<main role="main">
+					
+					<h2>Projects</h2>
+
+					<div id="projects">
+
+						<div id="honeycomb">
+
+						</div>
+						
+					</div>
+					
+				</main>
+
+			</div>
+
+		</div>
+
+		<script src="script/projects.js"></script>
+		<script src="script/main/header.js"></script>
+		<script src="script/main/content.js"></script>
+		<script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/109/three.min.js"></script>
+		<script defer src="script/index.js"></script>
+		
+	
+	</body>
+
+</html>
