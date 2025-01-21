@@ -55,8 +55,8 @@ var brickcount;
 var brickcontainerRect;
 var brickRects;
 resizeCanvas();
-var mouseX = brickcontainerRect.left + (brickcontainerRect.width / 2);
-var paddlePosition = mouseX - 50;
+var mouseX = 0;
+var paddlePosition = mouseX - (bcanvas.width / 20);
 
 var ballX = brickcontainerRect.width / 2;
 var ballY = bcanvas.height - 40;
@@ -71,7 +71,7 @@ function resetVariables() {
 
     won = false;
     wonmessage = false;
-    mouseX = brickcontainerRect.width / 2;
+    paddlePosition = mouseX - (bcanvas.width / 20);
     ballX = brickcontainerRect.width / 2;
     ballY = bcanvas.height - 40;
     ballDx = 3;
@@ -95,6 +95,26 @@ window.addEventListener("resize", resizeCanvas);
 
 window.addEventListener("mousemove", function (event) {
     mouseX = event.clientX - brickcontainerRect.left;
+});
+
+window.addEventListener("touchstart", function (event) {
+    mouseX = 0;
+    for (let i = 0; i < event.touches.length; i++) {
+        mouseX += event.touches[i].clientX;
+    }
+    mouseX = (mouseX / event.touches.length) - brickcontainerRect.left;
+
+    event.preventDefault();
+});
+
+window.addEventListener("touchmove", function (event) {
+    mouseX = 0;
+    for (let i = 0; i < event.touches.length; i++) {
+        mouseX += event.touches[i].clientX;
+    }
+    mouseX = (mouseX / event.touches.length) - brickcontainerRect.left;
+
+    event.preventDefault();
 });
 
 function rectCollision(a, b) {
