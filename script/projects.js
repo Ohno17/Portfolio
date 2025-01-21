@@ -2,18 +2,25 @@
 const projmodal = document.getElementById("projectdialog");
 const modaltitle = document.getElementById("dialogtitle");
 const modalbody = document.getElementById("dialogbody");
-const hexcontainer = document.getElementById("honeycomb");
+const projects = document.getElementById("projects");
 
-const hexagoncontent = [
+const projectsbutton = document.getElementById("breakoutbutton");
+
+const brickscontent = [
 	{
 		name: "Shape Shooter",
 		url: "https://shape-shooter.ohno17.repl.co/",
-		html: "<p>Shape Shooter is a 2D top-down shooter roguelike that I made to learn Javascript. It uses procedural generation to create levels, and it has a chunk system to support many enemies at once on the screen.</p>"
+		html: "<p>Shape Shooter is a 2D top-down shooter roguelike that I made to learn Javascript. It uses procedural generation to create levels, and it has a chunk system to support many enemies at once on the screen. This game is also at a bigger scale compared to my other projects, with many considerations for organization and future proof code.</p>"
 	},
 	{
 		name: "Flappy Square",
-		url: "https://replit.com/@Ohno17/Flappy-Square?v=1",
-		html: "<p>Flappy Square is a Flappy Bird clone written in C++. I used a library called SDL2 for handling graphics and input.</p>"
+		url: "https://github.com/Ohno17/Flappy-Square",
+		html: "<p>Flappy Square is a Flappy Bird clone written in C++. I used a library called SDL2 for handling graphics and input. This game represents my experiences in OOP (Object Oriented Programming) as well as lower level concepts like pointers.</p>"
+	},
+	{
+		name: "Wordform",
+		url: "https://github.com/Ohno17/Wordform",
+		html: "<p>Wordform is a C++ program that takes a given number and outputs it's word form. (Ex: 134 to 'One-hundred thirty four') This program represents my C++ experience as well as my skill to solve engineering problems with simple algorithms.</p>"
 	},
 	{
 		name: "Greenism",
@@ -29,24 +36,25 @@ const hexagoncontent = [
 		name: "VEX Robotics",
 		url: "https://github.com/Ohno17/Robotics",
 		html: "<p>In our school's VEX Robotics competition, I was the programmer. I used python to make this program.</p>"
+	},
+	{
+		name: "Metroidvania",
+		url: "https://github.com/hackclub/sprig/pull/2781",
+		html: "<p>This is a contribution to the library of games for Hackclub's Sprig. (Hackclub is an organization dedicated to programming for high schoolers.) This project taught me more about Javascript and creating generic systems that can be reused for multiple purposes.</p>"
 	}
 ];
 
 function openProjectModal(id) {
-
 	const integerid = parseInt(id);
 
-	modaltitle.innerHTML = "<a target='_blank' rel='noopener noreferrer' href='" + hexagoncontent[integerid].url + "'>" + hexagoncontent[integerid].name + "</a>";
-	modalbody.innerHTML = hexagoncontent[integerid].html;
+	modaltitle.innerHTML = "<a target='_blank' rel='noopener noreferrer' href='" + brickscontent[integerid].url + "'>" + brickscontent[integerid].name + "</a>";
+	modalbody.innerHTML = brickscontent[integerid].html;
 
 	projmodal.showModal();
-	
 }
 
 function closeProjectModal() {
-
 	projmodal.close();
-	
 }
 
 projmodal.addEventListener("click", function (event) {
@@ -57,37 +65,38 @@ projmodal.addEventListener("click", function (event) {
   }
 }, false);
 
-function disableHexagons() {
-
-	var i;
-	for (i = 0; i < hexcontainer.children.length; i++) {
-
-		hexcontainer.children[i].setAttribute("tabindex", "-1");
-		
+function disableBrickButtons() {
+	const brickButtons = document.querySelectorAll(".brick .front");
+	for (let i = 0; i < brickButtons.length; i++) {
+		brickButtons[i].setAttribute("tabindex", "-1");
 	}
-	
+	projectsbutton.setAttribute("tabindex", "-1");
 }
 
-function enableHexagons() {
-
-	var i;
-	for (i = 0; i < hexcontainer.children.length; i++) {
-
-		hexcontainer.children[i].setAttribute("tabindex", "0");
-		
+function enableBrickButtons() {
+	const brickButtons = document.querySelectorAll(".brick .front");
+	for (let i = 0; i < brickButtons.length; i++) {
+		brickButtons[i].setAttribute("tabindex", "0");
 	}
-	
+	projectsbutton.setAttribute("tabindex", "0");
 }
 
-for (var i = 0; i < hexagoncontent.length; i++) {
-	honeycomb.innerHTML += "<div id='hex" + i + "' class='hexagon' alt='" + hexagoncontent[i].name + "' title='" + hexagoncontent[i].name + "' tabindex='0' role='button' onclick='openProjectModal(" + i + ")'></div>";
-}
+function stringToColour(str) {
+    let hash = 0;
+    str.split('').forEach(function(char) {
+        hash = char.charCodeAt(0) + ((hash << 5) - hash);
+    });
 
-document.querySelectorAll("[role=\"button\"]").forEach(function(hex) {
-  hex.addEventListener("keydown", function(event) {
-    if (event.keyCode === 13 || event.keyCode === 32 || event.key === "Enter" || event.key === " ") {
-			event.preventDefault();
-      hex.click();
+    let colour = '#';
+    for (let i = 0; i < 3; i++) {
+        const value = (hash >> (i * 8)) & 0xff;
+        colour += value.toString(16).padStart(2, '0');
     }
-  })
-});
+    
+    return colour;
+}
+
+for (var i = 0; i < brickscontent.length; i++) {
+	projects.innerHTML += "<div id='brick" + i + "' class='brick' style='animation-delay: " + i * (1000 / brickscontent.length) + "ms;'><button class='front' alt='" + brickscontent[i].name + "' title='" + brickscontent[i].name + "' tabindex='0' onclick='openProjectModal(" + i + ")'></button><div class='back' style='background-color:" + stringToColour(brickscontent[i].name) + ";'></div></div>";
+}
+projects.innerHTML += "<div id='gamespace'></div>";

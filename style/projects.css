@@ -1,126 +1,142 @@
 
 #projects {
+	display: grid;
+	position: relative;
 
-	display: flex;
-	
+	grid-template-columns: repeat(3, 1fr);
+	gap: 5px;
+
+	padding: 3px;
+
+	perspective: 800px;
+
+	transition: background-color 2s;
 }
 
-#honeycomb {
-	
-  font-size: 0;
+#projects > #gamespace {
+	height: 0;
+	grid-column: span 3;
 
-	--s: 150px;
-  --m: 4px;
-  --f: calc(1.732 * var(--s) + 4 * var(--m)  - 1px);
-	
+	transition: height 2s;
 }
 
-#honeycomb .hexagon {
+#projects.active > #gamespace {
+	height: 6em;
+	grid-column: span 3;
+}
 
+#projects.active {
+	background-color: black;
+}
+
+#projects.active .brick {
+	animation: flip 1s;
+	animation-fill-mode: both;
+}
+
+@keyframes flip {
+	to {
+		transform: rotateY(180deg);
+	}
+}
+
+@keyframes unflip {
+	from {
+		transform: rotateY(180deg);
+	}
+	to {
+		transform: rotateY(0deg);
+	}
+}
+
+#projects .brick {
+	position: relative;
 	visibility: visible;
 
-	position: relative;
-	
-  width: var(--s);
-  margin: var(--m);
-  height: calc(var(--s)*1.1547);
-	
-  display: inline-block;
-	
-  font-size:initial;
-  clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-	
-  margin-bottom: calc(var(--m) - var(--s)*0.2885); 
+	height: 6em;
 
-	background: var(--accent-color-one);
-	transition: background 500ms, transform 1s;
-	
+	transform-style: preserve-3d;
+
+	animation: unflip 1s;
+	animation-fill-mode: both;
 }
 
-#honeycomb .hexagon::after {
+#projects .brick .front {
+	border: none;
 
-	content: attr(title);
+	background-color: black;
+	background-size: 100%;
+	background-repeat: no-repeat;
+
+	cursor: pointer;
+
+	transition: background-size 500ms;
+}
+
+#projects .brick .front, #projects .brick .front::before, #projects .brick .back, #projects .brick .back::before {
+	backface-visibility: hidden;
+}
+
+#projects .brick .front::before {
+	content: attr(alt);
 
 	position: absolute;
-
-	top: 50%;
-	left: calc((30% / 2) - 5px);
-	
-  transform: translateY(-50%);
-	
-  width: 70%;
+	left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
 
 	padding: 5px;
 
-	text-align: center;
+	color: var(--main-color);
+	background-color: rgba(0, 0, 0, 0.75);
 
-	border-radius: 10px;
+	border-radius: 6px;
 
-	background: rgba(0, 0, 0, 0.8);
+	white-space: nowrap;
 
-	opacity: 0;
-	transition: opacity 200ms;
-	
+	transition: font-size 500ms, background-color 500ms;
 }
 
-#honeycomb .hexagon::before {
+#projects .brick .front:hover, #projects .brick .front:focus {
+	background-size: 120%;
+}
 
-	content: "";
+#projects .brick .front:hover::before, #projects .brick .front:focus::before {
+	font-size: 1.5em;
+	background-color: black;
+}
 
+#projects .brick .front {
 	position: absolute;
-
-	top: 0px;
-	left: 0px;
-	
-  width: 100%;
-  height: 100%;
-
-	background-size: cover;
-	background-position: 50% 50%;
-	transition: filter 500ms, transform 1s;
-	
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
-#honeycomb .hexagon:hover, #honeycomb .hexagon:focus {
+#projects .brick .back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 
-	transform: scale(1.1);
-	background: var(--accent-color-two);
-	
+	background-color: red;
+
+	transform: rotateY(180deg);
 }
 
-#honeycomb .hexagon:hover::after, #honeycomb .hexagon:focus::after {
+#projects .brick[broken="true"] .back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: calc(100% - 9px);
+	height: calc(100% - 9px);
 
-	opacity: 1;
-	
-}
+	border: 4px dashed rgba(255, 255, 255, 0.089);
+	background-color: transparent !important;
 
-#honeycomb .hexagon:hover::before, #honeycomb .hexagon:focus::before {
-
-	transform: scale(1.1);
-	filter: brightness(1.5);
-	
-}
-
-#honeycomb .hexagon:active::before {
-	filter: brightness(2);
-}
-
-#honeycomb .hexagon:active {
-	transition: transform 100ms;
-	transform: scale(0.8);
-}
-
-#honeycomb::before {
-	
-  content: "";
-  width: calc(var(--s)/2 + var(--m));
-  float: left;
-  height: 120%;
-  shape-outside: repeating-linear-gradient(     
-                   #0000 0 calc(var(--f) - 3px),      
-                   #000  0 var(--f)
-	);
-	
+	transform: rotateY(180deg);
 }
 
 dialog {
@@ -173,7 +189,7 @@ dialog form button {
 	border: 3px solid black;
 	outline-width: 3px;
 
-	transition: background 300ms, color 300ms;
+	transition: background-color 300ms, color 300ms;
 }
 
 dialog form button:hover {
@@ -182,7 +198,40 @@ dialog form button:hover {
 }
 
 dialog::backdrop {
-	
-  background: rgba(0, 0, 0, 0.25);
-	
+	background: rgba(0, 0, 0, 0.25);
+}
+
+#breakoutbutton {
+	margin-top: auto;
+	margin-bottom: auto;
+
+	color: var(--background-color);
+	background-color: var(--main-color);
+
+	border: none;
+	font-size: 1.1em;
+	text-decoration: none;
+	padding: 5px;
+	cursor: pointer;
+}
+
+#breakoutbutton.active {
+	background-color: var(--accent-color-two);
+	cursor: not-allowed;
+}
+
+#bcanvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	opacity: 0;
+
+	transition: opacity 1s;
+}
+
+#projects.active #bcanvas {
+	opacity: 1;
 }

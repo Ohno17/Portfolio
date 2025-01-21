@@ -21,12 +21,12 @@ function switchToIndex(disable) {
 	window.location.hash = "/home";
 	document.title = "CS Portfolio - Home";
 	enableIndexAnimation();
-	disableHexagons();
+	enableIndexLinks()
+	disableBrickButtons();
 
 	content.setAttribute("data-active", "index");
 	
 	index.setAttribute("aria-hidden", "false");
-	index.setAttribute("tabindex", "0");
 	project.setAttribute("aria-hidden", "true");
 	
 	project.setAttribute("aria-hidden", "true");
@@ -49,12 +49,12 @@ function switchToProject(disable) {
 	window.location.hash = "/projects";
 	document.title = "CS Portfolio - Projects";
 	disableIndexAnimation();
-	enableHexagons();
+	disableIndexLinks();
+	enableBrickButtons();
 
 	content.setAttribute("data-active", "project");
 	
 	index.setAttribute("aria-hidden", "true");
-	index.setAttribute("tabindex", "-1");
 	project.setAttribute("aria-hidden", "false");
 
 	projectbutton.classList.add("active");
@@ -69,10 +69,12 @@ function contentSwitchEnd() {
 	if (navstate == NavigationState.INDEX) {
 
 		project.scrollTop = 0;
+		if (activated) deactivateBreakout();
 		
 	} else {
 
 		index.scrollTop = 0;
+		resizeCanvas();
 		
 	}
 	

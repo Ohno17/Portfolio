@@ -1,0 +1,40 @@
+
+#brick0 .front {
+	background-image: url("../asset/shapeshoot.png");
+	background-position: center;
+}
+
+#brick1 .front {
+	background-image: url("../asset/flappysquare.png");
+	background-position: -10px -10px;
+}
+
+#brick2 .front {
+	background-image: url("../asset/extenders.png");
+	background-position: center;
+}
+
+#brick3 .front {
+	background-image: url("../asset/greenism.png");
+	background-position: center;
+}
+
+#brick4 .front {
+	background-image: url("../asset/bobux.png");
+	background-position: center;
+}
+
+#brick5 .front {
+	background-image: url("../asset/vex.png");
+	background-position: center;
+}
+
+#brick6 .front {
+	background-image: url("../asset/metroidvania.png");
+	background-position: center;
+}
+
+#brick7 .front {
+	background-image: url("../asset/test.png");
+	background-position: center;
+}

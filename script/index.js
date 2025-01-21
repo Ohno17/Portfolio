@@ -1,4 +1,6 @@
 
+const links = document.querySelectorAll("#index section > a");
+
 const randomizeMatrix = function () {
 
 	const position = new THREE.Vector3();
@@ -99,3 +101,15 @@ function enableIndexAnimation() {
 }
 
 animate();
+
+function disableIndexLinks() {
+	for (let i = 0; i < links.length; i++) {
+		links[i].setAttribute("tabindex", "-1");
+	}
+}
+
+function enableIndexLinks() {
+	for (let i = 0; i < links.length; i++) {
+		links[i].setAttribute("tabindex", "0");
+	}
+}

@@ -84,7 +84,7 @@ a:hover {
 #content {
 
 	width: 200vw;
-	height: calc(100vh - 100px);
+	height: calc(100vh - 90px);
 
 	display: flex;
 	flex-direction: row;
@@ -108,7 +108,7 @@ a:hover {
 
 #index, #project {
 	
-	height: calc(100vh - 100px);
+	height: calc(100vh - 90px);
 	overflow-y: auto;
 	overflow-x: hidden;
 	width: 100vw;
