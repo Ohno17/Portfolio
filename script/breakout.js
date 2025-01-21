@@ -116,6 +116,10 @@ function breakBrick(i) {
     won = true;
 }
 
+function lerp(v1, v2, a) {
+    return (1 - a) * v1 + a * v2;
+}
+
 function gameLoop() {
     ctx.fillStyle = "white";
     ctx.font = "30px Arial";
@@ -124,7 +128,7 @@ function gameLoop() {
 
     ctx.clearRect(0, 0, bcanvas.width, bcanvas.height);
 
-    paddlePosition = mouseX - (bcanvas.width / 20);
+    paddlePosition = lerp(paddlePosition, mouseX - (bcanvas.width / 20), 0.2);
 
     // Draw paddle and ball
     ctx.fillRect(paddlePosition, bcanvas.height - 30, bcanvas.width / 10, 5);
