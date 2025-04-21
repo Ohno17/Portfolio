@@ -41,6 +41,11 @@ const brickscontent = [
 		name: "Metroidvania",
 		url: "https://github.com/hackclub/sprig/pull/2781",
 		html: "<p>This is a contribution to the library of games for Hackclub's Sprig. (Hackclub is an organization dedicated to programming for high schoolers.) This project taught me more about Javascript and creating generic systems that can be reused for multiple purposes.</p>"
+	},
+	{
+		name: "JTracer",
+		url: "https://github.com/Ohno17/JTracer",
+		html: "<p>This is a project representing my knowledge of Java, a well-known programming language as well as systems design as I also wrote a system to read in text files describing create 3D scenes.</p>"
 	}
 ];
 
