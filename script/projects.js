@@ -24,13 +24,11 @@ const brickscontent = [
 	},
 	{
 		name: "Greenism",
-		url: "https://greenism.the-green-team.repl.co/",
-		html: "<p>Greenism is a project that I made with <a href='https://replit.com/@krithiks'>Krithik Senthilkumar</a>. It contains one of our past projects, Bobux Clicker, except expanded with online features such as cloud saving, leaderboards, and chatting. We used technologies like React to develop this website. The backend is written in python and uses Flask, Websockets and MongoDB for real-time communication and data storage.</p>"
+		html: "<p>Greenism is a project that I made with a friend. It contains one of our past projects, Bobux Clicker, except expanded with online features such as cloud saving, leaderboards, and chatting. We used technologies like React to develop this website. The backend is written in python and uses Flask, Websockets and MongoDB for real-time communication and data storage.</p>"
 	},
 	{
 		name: "Bobux Clicker",
-		url: "https://bobux-clicker.krithiks.repl.co/",
-		html: "<p>This is a clicker game that I made with <a href='https://replit.com/@krithiks'>Krithik Senthilkumar</a>. It has a leveling system along with some powerups.</p>"
+		html: "<p>This is a clicker game that I made with a friend. It has a leveling system along with some powerups.</p>"
 	},
 	{
 		name: "VEX Robotics",
@@ -57,7 +55,12 @@ const brickscontent = [
 function openProjectModal(id) {
 	const integerid = parseInt(id);
 
-	modaltitle.innerHTML = "<a target='_blank' rel='noopener noreferrer' href='" + brickscontent[integerid].url + "'>" + brickscontent[integerid].name + "</a>";
+	if (brickscontent[integerid].url) {
+		modaltitle.innerHTML = "<a target='_blank' rel='noopener noreferrer' href='" + brickscontent[integerid].url + "'>" + brickscontent[integerid].name + "</a>";
+	} else {
+		modaltitle.innerHTML = brickscontent[integerid].name;
+	}
+	
 	modalbody.innerHTML = brickscontent[integerid].html;
 
 	projmodal.showModal();

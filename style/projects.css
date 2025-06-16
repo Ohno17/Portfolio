@@ -162,7 +162,9 @@ dialog #dialogbody {
 }
 
 dialog h3 a::after {
-	content: url("/asset/newtab.svg");
+	content: "___";
+	mask: url("/asset/newtab.svg") center no-repeat;
+	background: var(--accent-color-two);
 	margin: 2px;
 }
 

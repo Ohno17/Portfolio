@@ -40,7 +40,6 @@ body {
 	
 	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 	font-size: 1.1em;
-	font-style: italic;
 	color: var(--main-color);
 	background-color: var(--background-color);
 	
@@ -63,6 +62,12 @@ section {
 
 	padding-bottom: 20px;
 	
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+	font-style: italic;
+
 }
 
 a {
