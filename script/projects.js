@@ -45,7 +45,12 @@ const brickscontent = [
 	{
 		name: "JTracer",
 		url: "https://github.com/Ohno17/JTracer",
-		html: "<p>This is a project representing my knowledge of Java, a well-known programming language as well as systems design as I also wrote a system to read in text files describing create 3D scenes.</p>"
+		html: "<p>This is a project representing my knowledge of Java, a well-known programming language. It also shows my abilities in systems design, as I wrote interconnecting parts communicating 3D scenes, and different objects in the scenes themselves, etc.</p>"
+	},
+	{
+		name: "Divine Towers",
+		url: "https://github.com/Ohno17/DivineTowers",
+		html: "<p>This is a Minecraft mod, where I integrated my own code into an existing codebase. The mod is written in Java.</p>"
 	}
 ];
 

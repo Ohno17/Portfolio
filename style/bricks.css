@@ -38,3 +38,8 @@
 	background-image: url("../asset/jtracer.png");
 	background-position: center;
 }
+
+#brick8 .front {
+	background-image: url("../asset/divinet.png");
+	background-position: center;
+}
