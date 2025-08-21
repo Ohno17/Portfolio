@@ -1,3 +1,3 @@
-# Portfolio
+# Things I've Done
 
-This is my Computer Science portfolio, containing some of my projects.
+This is a website cataloging projects, research, and anything else I feel like.
