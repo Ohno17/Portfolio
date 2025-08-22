@@ -30,14 +30,18 @@ function activateBreakout() {
     setFullBricks();
     ctx.clearRect(0, 0, bcanvas.width, bcanvas.height);
 
-    setTimeout(function () {
-        resetVariables();
-        gameLoop();
-
+    var followToBottom = setInterval(function () {
         window.scrollTo({
             top: document.body.scrollHeight,
             behavior: 'smooth'
         });
+    }, 100);
+
+    setTimeout(function () {
+        resetVariables();
+        gameLoop();
+
+        clearInterval(followToBottom);
     }, 2000);
 }
 
@@ -66,7 +70,10 @@ var paddlePosition = mouseX - (bcanvas.width / 20);
 var ballX = brickcontainerRect.width / 2;
 var ballY = bcanvas.height - 40;
 var ballDx = 0;
-var ballDy = -1;
+var ballDy = 0;
+
+var hasReachedSpeed = false;
+var paddleYOffset = -10;
 
 var won = false;
 var wonmessage = false;
@@ -79,8 +86,10 @@ function resetVariables() {
     paddlePosition = mouseX - (bcanvas.width / 20);
     ballX = brickcontainerRect.width / 2;
     ballY = bcanvas.height - 40;
-    ballDx = 3;
-    ballDy = -3;
+    ballDx = 0;
+    ballDy = 0;
+    paddleYOffset = -10;
+    hasReachedSpeed = false;
 }
 
 function resizeCanvas(event) {
@@ -156,8 +165,14 @@ function gameLoop() {
     paddlePosition = lerp(paddlePosition, mouseX - (bcanvas.width / 20), 0.2);
 
     // Draw paddle and ball
-    ctx.fillRect(paddlePosition, bcanvas.height - 30, bcanvas.width / 10, 5);
+    ctx.fillRect(paddlePosition, bcanvas.height - paddleYOffset, bcanvas.width / 10, 5);
     ctx.fillRect(ballX - 5, ballY - 5, 10, 10);
+
+    if (Math.abs(ballDx) < 3 && !hasReachedSpeed) ballDx += 0.1;
+    else hasReachedSpeed = true;
+    if (Math.abs(ballDy) < 3 && !hasReachedSpeed) ballDy -= 0.1;
+    else hasReachedSpeed = true;
+    if (paddleYOffset < 30) paddleYOffset = lerp(paddleYOffset, 30.5, 0.03);
 
     // Check ball collision with bricks
     for (let i = 0; i < brickcount; i++) {
@@ -190,7 +205,7 @@ function gameLoop() {
     // Check ball collision with paddle
     if (rectCollision({
         x: paddlePosition,
-        y: bcanvas.height - 30,
+        y: bcanvas.height - paddleYOffset,
         width: bcanvas.width / 10,
         height: 5
     },
