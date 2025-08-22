@@ -6,12 +6,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 
-	<title>CS Portfolio - Home</title>
+	<title>Ajay Srinivasan</title>
 
 	<link rel="icon" type="image/png" href="asset/csportfolio.png" />
 
 	<link href="style/main/style.css" rel="stylesheet" type="text/css" />
-	<link href="style/main/nav.css" rel="stylesheet" type="text/css" />
 	<link href="style/index.css" rel="stylesheet" type="text/css" />
 	<link href="style/projects.css" rel="stylesheet" type="text/css" />
 	<link href="style/bricks.css" rel="stylesheet" type="text/css" />
@@ -31,98 +30,32 @@
 		</form>
 	</dialog>
 
-	<header data-active="true">
+	<main role="main">
 
+		<section id="firstintro">
+			<h2 id="intro">Hello, I'm<br><span id="name">Ajay Srinivasan</span>.</h2>
+			<p>A sophmore looking into neuroscience, biotechnology, and computer engineering.</p>
 
-		<a href="#/home">
-			<h1>Computer Science Portfolio</h1>
-		</a>
+			<a href="https://github.com/Ohno17" target="_blank" rel="noopener noreferrer">Github</a>
+		</section>
 
-		<nav>
-			<button onclick="switchToIndex()" id="indexbutton" class="active">Home</button>
-			<button onclick="switchToProject()" id="projectbutton" class="">Projects</button>
-		</nav>
+		<section>
+			<div style="display: flex; justify-content: space-between;">
+				<h2>Projects</h2>
+				<button id="breakoutbutton" onclick="toggleBreakout()">Breakout</button>
+			</div>
 
-	</header>
+			<div id="projects">
+				<canvas id="bcanvas"></canvas>
+			</div>
+		</section>
 
-	<div id="spacer" aria-hidden="true"></div>
-
-	<div id="content" data-active="index">
-
-		<!-- Index page -->
-
-		<div id="index" aria-hidden="false">
-
-			<main role="main">
-
-				<section id="firstintro">
-
-					<h2 id="intro">Hello, I am <span id="name">Ohno17</span>.</h2>
-
-					<p>
-						I first got into programming when I started making simple games for my friends in middle school,
-						like text-based adventures and small 2D platformers using visual scripting tools like Scratch. I
-						liked turning my ideas into these interactive experiences, and seeing people play what I made kept
-						me motivated.<br/><br/>
-						
-						What started as a way to share something fun became a deeper interest in software. Along the way,
-						I found that robotics was particularly interesting to me because it made my code have an immediate
-						effect on the real world. Both VEX and FIRST Robotics programs were a valuable learning experience,
-						helping me build engineering and collaboration skills. Eventually, I spent time learning new
-						languages and tools, not just to share fun, but to code for the fun of it.
-					</p>
-
-				</section>
-
-				<section>
-
-					<h2>Skills</h2>
-
-					<p>HTML, CSS, Javascript, React, Python, Flask, C, C++, Lua, Java</p>
-
-				</section>
-
-				<section>
-
-					<h2 style="display: inline-block; margin-right: 10px;">Links</h2>
-
-					<a href="https://github.com/Ohno17" target="_blank" rel="noopener noreferrer">Github</a>
-					<a href="https://replit.com/@Ohno17" target="_blank" rel="noopener noreferrer">Replit</a>
-
-				</section>
-
-			</main>
-
-		</div>
-
-		<!-- Projects page -->
-
-		<div id="project" aria-hidden="true">
-
-			<main role="main">
-
-				<div style="display: flex; justify-content: space-between;">
-					<h2>Projects</h2>
-					<button id="breakoutbutton" onclick="toggleBreakout()">Breakout</button>
-				</div>
-
-				<div id="projects">
-					<canvas id="bcanvas"></canvas>
-				</div>
-
-			</main>
-
-		</div>
-
-	</div>
+	</main>
 
 	<script src="script/projects.js"></script>
 	<script src="script/breakout.js"></script>
-	<script src="script/main/header.js"></script>
-	<script src="script/main/content.js"></script>
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/109/three.min.js"></script>
 	<script defer src="script/index.js"></script>
-
 
 </body>
 

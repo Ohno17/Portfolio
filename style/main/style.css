@@ -46,8 +46,6 @@ body {
 	margin: 0px;
 	padding: 0px;
 	
-	overflow: hidden;
-	
 }
 
 main {
@@ -76,46 +74,4 @@ a {
 
 a:hover {
 	color: var(--accent-color-one);
-}
-
-#spacer {
-
-	height: 90px;
-	
-}
-
-/* Content switching */
-
-#content {
-
-	width: 200vw;
-	height: calc(100vh - 90px);
-
-	display: flex;
-	flex-direction: row;
-	gap: 0px;
-
-	transition: transform 1s;
-	
-}
-
-#content[data-active="index"] {
-
-	transform: translateX(0vw);
-	
-}
-
-#content[data-active="project"] {
-
-	transform: translateX(-100vw);
-	
-}
-
-#index, #project {
-	
-	height: calc(100vh - 90px);
-	overflow-y: auto;
-	overflow-x: hidden;
-	width: 100vw;
-	
 }

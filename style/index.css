@@ -11,12 +11,19 @@
 	
 }
 
+#firstintro p {
+
+	font-size: 1.4em;
+	width: 50%;
+
+}
+
 #tcanvas {
 
-	position: absolute;
+	position: fixed;
 
 	left: 0px;
-	top: -90px;
+	top: 0px;
 
 	z-index: -10;
 	

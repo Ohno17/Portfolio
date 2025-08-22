@@ -33,6 +33,11 @@ function activateBreakout() {
     setTimeout(function () {
         resetVariables();
         gameLoop();
+
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
     }, 2000);
 }
 

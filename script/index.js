@@ -1,6 +1,4 @@
 
-const links = document.querySelectorAll("#index section > a");
-
 const randomizeMatrix = function () {
 
 	const position = new THREE.Vector3();
@@ -60,11 +58,11 @@ for ( let i = 0; i < 2000; i ++ ) {
 
 scene.add(mesh);
 
-var animationdisabled = false;
+var animationdisabled = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function animate() {
 
-	if (animationdisabled) {
+	if (animationdisabled.matches) {
 		return;
 	}
 	
@@ -87,29 +85,4 @@ window.addEventListener("resize", function() {
 	
 }, false);
 
-function disableIndexAnimation() {
-
-	animationdisabled = true;
-	
-}
-
-function enableIndexAnimation() {
-
-	animationdisabled = false;
-	animate();
-	
-}
-
 animate();
-
-function disableIndexLinks() {
-	for (let i = 0; i < links.length; i++) {
-		links[i].setAttribute("tabindex", "-1");
-	}
-}
-
-function enableIndexLinks() {
-	for (let i = 0; i < links.length; i++) {
-		links[i].setAttribute("tabindex", "0");
-	}
-}
