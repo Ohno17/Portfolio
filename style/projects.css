@@ -217,6 +217,10 @@ dialog::backdrop {
 	cursor: pointer;
 }
 
+#breakoutbutton:hover {
+	background-color: var(--accent-color-one);
+}
+
 #breakoutbutton.active {
 	background-color: var(--accent-color-two);
 	cursor: not-allowed;

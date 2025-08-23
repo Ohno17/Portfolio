@@ -219,6 +219,7 @@ function gameLoop() {
             ballDy = -ballDy;
 
             ballDx = (ballX - mouseX) / 8;
+            paddleYOffset = 25;
         }
         
         if (ballX > paddlePosition + bcanvas.width / 10 || ballX < paddlePosition) {
