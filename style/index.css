@@ -18,10 +18,17 @@
 
 }
 
-#firstintro img {
+#firstintro a img {
 
 	width: 2em;
 	height: 2em;
+
+}
+
+#firstintro a {
+
+	display: inline-block;
+	margin-right: 0.5em;
 
 }
 
