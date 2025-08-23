@@ -74,6 +74,7 @@ var ballDy = 0;
 
 var hasReachedSpeed = false;
 var paddleYOffset = -10;
+var lastFrame;
 
 var won = false;
 var wonmessage = false;
@@ -90,6 +91,7 @@ function resetVariables() {
     ballDy = 0;
     paddleYOffset = -10;
     hasReachedSpeed = false;
+    lastFrame = undefined;
 }
 
 function resizeCanvas(event) {
@@ -154,7 +156,11 @@ function lerp(v1, v2, a) {
     return (1 - a) * v1 + a * v2;
 }
 
-function gameLoop() {
+function gameLoop(thisFrame) {
+    var deltaTime = (thisFrame - lastFrame) / 16.5;
+    if (Number.isNaN(deltaTime)) deltaTime = 1;
+    lastFrame = thisFrame;
+
     ctx.fillStyle = "white";
     ctx.font = "30px Arial";
     ctx.textBaseline = "middle";
@@ -168,9 +174,9 @@ function gameLoop() {
     ctx.fillRect(paddlePosition, bcanvas.height - paddleYOffset, bcanvas.width / 10, 5);
     ctx.fillRect(ballX - 5, ballY - 5, 10, 10);
 
-    if (Math.abs(ballDx) < 3 && !hasReachedSpeed) ballDx += 0.1;
+    if (Math.abs(ballDx) < 3 && !hasReachedSpeed) ballDx += 0.1 * deltaTime;
     else hasReachedSpeed = true;
-    if (Math.abs(ballDy) < 3 && !hasReachedSpeed) ballDy -= 0.1;
+    if (Math.abs(ballDy) < 3 && !hasReachedSpeed) ballDy -= 0.1 * deltaTime;
     else hasReachedSpeed = true;
     if (paddleYOffset < 30) paddleYOffset = lerp(paddleYOffset, 30.5, 0.03);
 
@@ -219,7 +225,7 @@ function gameLoop() {
             ballDy = -ballDy;
 
             ballDx = (ballX - mouseX) / 8;
-            paddleYOffset = 25;
+            paddleYOffset = 20;
         }
         
         if (ballX > paddlePosition + bcanvas.width / 10 || ballX < paddlePosition) {
@@ -227,8 +233,8 @@ function gameLoop() {
         }
     }
 
-    ballX += ballDx;
-    ballY += ballDy;
+    ballX += ballDx * deltaTime;
+    ballY += ballDy * deltaTime;
 
     // If ball needs to bounce off walls
     if (ballY <= 5) {
